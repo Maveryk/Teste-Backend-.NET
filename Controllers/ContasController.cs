@@ -58,15 +58,12 @@ public class ContasController : ControllerBase
         // Retorne uma resposta adequada
     }
 
-    // Endpoint para realizar login
-
     /// <summary>
     /// Endpoint para obter o saldo da conta
     /// </summary>
     /// <response code="200">Returna o saldo da conta</response>
-
     [Authorize]
-    [HttpGet("{numeroConta}/saldo")]
+    [HttpGet("saldo")]
     public IActionResult Saldo()
     {
         using (NpgsqlConnection connection = new NpgsqlConnection(_connectionString))
@@ -102,7 +99,7 @@ public class ContasController : ControllerBase
     /// </summary>
     /// <response code="200">Returna o extrato da conta</response>
     [Authorize]
-    [HttpGet("{numeroConta}/extrato")]
+    [HttpGet("extrato")]
     public IActionResult Extrato()
     {
         var token = Request.Headers["Authorization"].ToString().Split(' ')[1];

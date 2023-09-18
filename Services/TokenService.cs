@@ -16,7 +16,6 @@ public class TokenService
             Subject = new ClaimsIdentity(new Claim[]
             {
                       new Claim("numeroConta", conta.numeroConta.ToString()),
-                      new Claim("email", conta.email.ToString()),                      
             }),
             Expires = DateTime.UtcNow.AddHours(3),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -31,7 +30,6 @@ public class TokenService
             token = tokenString
         };
     }
-
 
     public static Conta ValidateToken(string token)
     {
@@ -51,14 +49,12 @@ public class TokenService
 
             var numeroConta = int.Parse(claims.FirstOrDefault(claim => claim.Type == "numeroConta")?.Value);
             var email = claims.FirstOrDefault(claim => claim.Type == "email")?.Value;
-            
-            return new Conta(numeroConta, email!);
+
+            return new Conta(numeroConta, email);
         }
         catch (Exception)
         {
             throw;
         }
-       
     }
-
 }

@@ -1,11 +1,11 @@
 ﻿using Dapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using TesteBackend.Model;
 using TesteBackend.Services;
 
 namespace TesteBackend.Controllers;
+
 [Route("api/[controller]")]
 [ApiController]
 public class AuthController : ControllerBase

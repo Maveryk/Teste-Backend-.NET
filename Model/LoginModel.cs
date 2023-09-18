@@ -7,7 +7,5 @@ public class LoginModel
 
     public LoginModel()
     {
-           
     }
-
 }
